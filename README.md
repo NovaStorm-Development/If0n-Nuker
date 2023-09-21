@@ -1,5 +1,5 @@
 # If0n-Nuker
-A new discord nuke making software written in python by If.0n on discord
+A feature rich python Discord nuker made by If.0n
 
 # Features
 - Webhook that shows info about the server you nuke
