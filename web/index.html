@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>If0n Nuker v2.0.0</title>
+        <link rel="stylesheet" href="style.css"/>
+    </head>
+    <body>
+        <div class="container">
+            <form onsubmit="return false;">
+                <label for="name">Bot Token</label>
+                <input type="text" id="name" name="name" required>
+                <br>
+                <button type="button" id="connect" onclick="saveToken()">Connect</button>
+            </form>
+        </div>
+
+        <script src="eel.js"></script>
+        
+        <script>
+            function saveToken() {
+                const token = document.getElementById("name").value;
+                eel.save_token(token)(function (response) {
+                    if (response === "success") {
+                        // Token saved successfully, now trigger the bot launch
+                        eel.launch()(function (launchResponse) {
+                            if (launchResponse === "success") {
+                                console.log("Bot connected successfully!");
+                            } else {
+                                console.error("Failed to connect bot.");
+                            }
+                        });
+                    } else {
+                        console.error("Invalid token. Please enter a valid token.");
+                    }
+                });
+            }
+        </script>
+    </body>
+</html>
